@@ -1,0 +1,16 @@
+.preview {
+    background-color: beige;
+    font-family: arial;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.resumeName {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.sectionHeader {
+    font-size: 18px;
+    font-weight: bold;
+}
