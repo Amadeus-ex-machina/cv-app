@@ -1,7 +1,8 @@
 import React from 'react'
+import './Edit.css';
 
 export default function Edit(props) {
-    console.log(props);
+    const { about, education, work } = props.sections;
     return (
         <div>
             <form>
@@ -10,16 +11,17 @@ export default function Edit(props) {
                     ABOUT
                     <br />
                     Name:
-                    <input type="text" name="name" value={props.name} onChange={props.handleChange} />
+                    <input type="text" name="name" value={about.name} onChange={props.handleChange} />
                     <br />
                     Email:
-                    <input type="text" name="email" value={props.email} onChange={props.handleChange} />
+                    <input type="text" name="email" value={about.email} onChange={props.handleChange} />
                     <br />
                     Phone:
-                    <input type="text" name="phone" value={props.phone} onChange={props.handleChange} />
+                    <input type="text" name="phone" value={about.phone} onChange={props.handleChange} />
                     <br />
                     Profile:
-                    <textarea rows="5" cols="40" name="profile" value={props.profile} onChange={props.handleChange} />
+                    <br />
+                    <textarea rows="5" cols="40" name="profile" value={about.profile} onChange={props.handleChange} />
                     <br />
                     <br />
 
@@ -27,9 +29,16 @@ export default function Edit(props) {
                     EDUCATION
                     <br />
                     School:
-                    <input type="text" name="school" value={props.school} onChange={props.handleChangeEducation} />
+                    <input type="text" name="school" value={education.school} onChange={props.handleChangeEducation} />
+                    <br />
                     Major:
-                    <input type="text" name="major" value={props.major} onChange={props.handleChangeEducation} />
+                    <input type="text" name="major" value={education.major} onChange={props.handleChangeEducation} />
+                    <br />
+                    Start date:
+                    <input type="text" name="start" value={education.start} onChange={props.handleChangeEducation} />
+                    <br />
+                    End date:
+                    <input type="text" name="end" value={education.end} onChange={props.handleChangeEducation} />
                     <br />
                     <br />
 
@@ -37,14 +46,23 @@ export default function Edit(props) {
                     WORK
                     <br />
                     Company:
-                    <input type="text" name="company" value={props.company} onChange={props.handleChangeWork} />
+                    <input type="text" name="company" value={work.company} onChange={props.handleChangeWork} />
+                    <br />
                     Position:
-                    <input type="text" name="position" value={props.position} onChange={props.handleChangeWork} />
+                    <input type="text" name="position" value={work.position} onChange={props.handleChangeWork} />
+                    <br />
+                    Start date:
+                    <input type="text" name="start" value={work.start} onChange={props.handleChangeWork} />
+                    <br />
+                    End date:
+                    <input type="text" name="end" value={work.end} onChange={props.handleChangeWork} />
+                    <br />
                     Description:
-                    <input type="text" name="desc" value={props.desc} onChange={props.handleChangeWork} />
-
+                    <br />
+                    <textarea rows="5" cols="40" name="desc" value={work.desc} onChange={props.handleChangeWork} />
                 </label>
             </form>
+            <button type="button" onClick={props.resetResume}>Reset</button>
         </div>
     )
 }

@@ -1,11 +1,34 @@
 import React, { useState, useRef, useEffect } from "react";
 import Edit from './Edit';
 import Preview from './Preview';
+import './App.css';
 
 function App() {
     const [about, setAbout] = useState({});
     const [education, setEducation] = useState({});
     const [work, setWork] = useState({});
+
+    const initialStateAbout = {
+        name: '',
+        email: '',
+        phone: '',
+        profile: ''
+    };
+
+    const initialStateEducation = {
+        school: '',
+        major: '',
+        start: '',
+        end: ''
+    };
+
+    const initialStateWork = {
+        company: '',
+        position: '',
+        start: '',
+        end: '',
+        desc: ''
+    };
 
     // Loading from local storage
     useEffect(() => {
@@ -36,8 +59,6 @@ function App() {
         localStorage.setItem('work', JSON.stringify(work));
     }, [work]);
 
-    console.log(about);
-
     function handleChange(e) {
         const { value, name } = e.target;
         setAbout({
@@ -62,12 +83,23 @@ function App() {
         })
     }
 
+    function resetResume() {
+        setAbout({ ...initialStateAbout });
+        setEducation({ ...initialStateEducation });
+        setWork({ ...initialStateWork });
+    }
+
+    function addEducation() {
+        
+    }
+
     return (
         <>
-            <Edit handleChange={handleChange} handleChangeEducation={handleChangeEducation} handleChangeWork={handleChangeWork} />
-            <br />
-            Preview:
-            <Preview about={about} education={education} work={work} />
+            <div className='app'>
+                <Edit sections={{ about, education, work }} handleChange={handleChange} handleChangeEducation={handleChangeEducation} handleChangeWork={handleChangeWork} resetResume={resetResume} />
+                <br />
+                <Preview about={about} education={education} work={work} />
+            </div>
         </>
     )
 }
